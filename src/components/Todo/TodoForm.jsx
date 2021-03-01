@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { Form, Row, Col } from 'react-bootstrap';
+import {
+  Form, Row, Col, Button,
+} from 'react-bootstrap';
 import { TodosContext } from '../../TodoContext';
 
 const TodoForm = () => {
@@ -24,6 +26,11 @@ const TodoForm = () => {
               placeholder="Insert your todo"
             />
           </Form.Group>
+        </Col>
+        <Col>
+          <Button type="submit">
+            Add todo
+          </Button>
         </Col>
       </Row>
     </Form>
