@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
+import TodoPage from './pages/Todo';
 
 const routes = [
   {
@@ -12,6 +13,7 @@ const routes = [
   {
     path: '/todos',
     name: 'Todos',
+    component: TodoPage,
   },
 ];
 
