@@ -4,16 +4,27 @@ import {
 } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { TodosContext } from '../../TodoContext';
+import myAxios from '../../utils/api';
 
 const TodoForm = () => {
   const [todos, setTodos] = useContext(TodosContext);
   const [todo, setTodo] = useState('');
 
-  const onAddTodo = (event) => {
+  const onAddTodo = async (event) => {
     event.preventDefault();
-    setTodos([...todos, todo]);
-    toast.info('Created');
-    setTodo('');
+
+    const data = {
+      title: todo,
+    };
+
+    try {
+      await myAxios.post('/todo', data);
+      setTodos([...todos, todo]);
+      setTodo('');
+      toast.info('Created');
+    } catch (e) {
+      toast.error(e.message);
+    }
   };
 
   return (
