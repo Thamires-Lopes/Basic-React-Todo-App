@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import {
   Form, Row, Col, Button,
 } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import { TodosContext } from '../../TodoContext';
 
 const TodoForm = () => {
@@ -11,6 +12,7 @@ const TodoForm = () => {
   const onAddTodo = (event) => {
     event.preventDefault();
     setTodos([...todos, todo]);
+    toast.info('Created');
     setTodo('');
   };
 

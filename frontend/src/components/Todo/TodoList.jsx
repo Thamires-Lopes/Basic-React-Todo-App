@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { Table, Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import { TodosContext } from '../../TodoContext';
 
 const TodoList = () => {
   const [todos, setTodos] = useContext(TodosContext);
 
   const onDeleteTodo = (index) => {
+    toast.info('Deleted');
     todos.splice(index, 1);
     setTodos([...todos]);
   };
