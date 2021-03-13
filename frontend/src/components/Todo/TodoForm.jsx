@@ -18,10 +18,10 @@ const TodoForm = () => {
     };
 
     try {
-      await myAxios.post('/todo', data);
-      setTodos([...todos, todo]);
+      const response = await myAxios.post('/todo', data);
+      toast.info(`Todo "${response.data.todo.title}" created!`);
+      setTodos([...todos, response.data.todo]);
       setTodo('');
-      toast.info('Created');
     } catch (e) {
       toast.error(e.message);
     }

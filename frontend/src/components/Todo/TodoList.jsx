@@ -3,14 +3,20 @@ import React, { useContext } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { TodosContext } from '../../TodoContext';
+import myAxios from '../../utils/api';
 
 const TodoList = () => {
   const [todos, setTodos] = useContext(TodosContext);
 
-  const onDeleteTodo = (index) => {
-    toast.info('Deleted');
-    todos.splice(index, 1);
-    setTodos([...todos]);
+  const onDeleteTodo = async (todo) => {
+    try {
+      await myAxios.delete(`/todo/${todo._id}`);
+      const newTodos = todos.filter(({ _id }) => _id !== todo._id);
+      setTodos(newTodos);
+      toast.info(`Todo "${todo.title}" deleted`);
+    } catch (e) {
+      toast.error(e.message);
+    }
   };
 
   return (
@@ -33,7 +39,7 @@ const TodoList = () => {
             </td>
             <td>
               <Button
-                onClick={() => onDeleteTodo(index)}
+                onClick={() => onDeleteTodo(todo)}
                 variant="danger"
               >
                 Delete

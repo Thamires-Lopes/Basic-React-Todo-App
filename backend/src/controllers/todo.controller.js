@@ -9,7 +9,7 @@ class TodoController {
 
     async store(req, res) {
         const data = req.body;
-        const todo = TodoModel.create(data);
+        const todo = await TodoModel.create(data);
 
         res.send({ todo });
     }
