@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useContext } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
@@ -22,13 +23,13 @@ const TodoList = () => {
         </tr>
       </thead>
       <tbody className="mb-2 text-center">
-        {todos.map((todo, index) => (
-          <tr>
+        {todos.length ? todos.map((todo, index) => (
+          <tr key={todo._id}>
             <td>
               {index}
             </td>
             <td>
-              {todo}
+              {todo.title}
             </td>
             <td>
               <Button
@@ -39,7 +40,13 @@ const TodoList = () => {
               </Button>
             </td>
           </tr>
-        ))}
+        )) : (
+          <tr>
+            <td colSpan={3} align="center">
+              No Data Found
+            </td>
+          </tr>
+        )}
       </tbody>
     </Table>
   );
