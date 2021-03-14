@@ -31,7 +31,7 @@ const TodoList = () => {
     <>
       <TodoModal
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        setModalShow={setModalShow}
         todoToEdit={todoToEdit}
       />
       <Table striped bordered hover variant="dark">

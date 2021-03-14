@@ -7,10 +7,14 @@ import { toast } from 'react-toastify';
 import { TodosContext } from '../../TodoContext';
 import myAxios from '../../utils/api';
 
-const TodoModal = ({ show, onHide, todoToEdit }) => {
+const TodoModal = ({ show, setModalShow, todoToEdit }) => {
   const [todos, setTodos] = useContext(TodosContext);
   const [edit, setEdit] = useState('');
 
+  const onHide = () => {
+    setEdit('');
+    setModalShow(false);
+  };
   const onSaveTodo = () => {
     try {
       const newTodos = todos.map((todo) => {
