@@ -1,10 +1,9 @@
 import React from 'react';
-import WelcomeCard from '../../components/Card';
-import homeImage from '../../images/home_image.jpg';
+import WelcomeSlides from '../../components/Carrousel/index';
 
 const Home = () => (
   <div>
-    <WelcomeCard title="Home" subtitle="Welcome to your todo app!" image={homeImage} />
+    <WelcomeSlides />
   </div>
 );
 
